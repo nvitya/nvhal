@@ -15,6 +15,6 @@ Currently supported:
   - DMA
 
 Currently only the Raspberry Pi 4B supported, I've tested it with a 2G variant.
-The older Raspberry Pi models have only one UART and does not support DMA.
+(The older Raspberry Pi models have only one UART and does not support DMA.)
 
 The structure of the NVHAL project is similar to NVCM, so it is relative easy to add support for other CPU-s (e.g. allwinner, rockchip).
