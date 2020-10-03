@@ -1,10 +1,11 @@
 # nvhal
 Portable C++ Direct Hardware Access Layer for Embedded Projects
 
-I've created a vendor idependent hardware access library for ARM Cortex-M processors, called NVCM.
-Github link: https://github.com/nvitya/nvcm, https://github.com/nvitya/nvcmtests
+Several years ago I've created an easy to use vendor idependent hardware access library for ARM Cortex-M processors, called NVCM.
+Github link: https://github.com/nvitya/nvcm, https://github.com/nvitya/nvcmtests 
+(I'm still actively maintaining these)
 
-I just wanted to drive the UARTs on the Raspberry Pi 4B with DMA so I ended up with this.
+I just wanted to drive the UARTs on the Raspberry Pi 4B with DMA so I ended up with this NVHAL project.
 The HW access way is very much the same as in the NVCM.
 
 Currently supported:
