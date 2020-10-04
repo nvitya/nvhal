@@ -135,7 +135,7 @@ bool THwDmaChannel_broadcom::Init(int achnum, int admarq)  // admarq = periphera
 		g_dma_channel_regs = (uint8_t *)hw_memmap(HWDMA_BASE_ADDRESS, 4096);
 	}
 
-  regs = (TDmaChannelRegs *)(g_dma_channel_regs + 0x100);
+  regs = (TDmaChannelRegs *)(g_dma_channel_regs + achnum * 0x100);
 
   // allocate the control blocks in the uncached memory
   if (!cb)
@@ -174,6 +174,11 @@ void THwDmaChannel_broadcom::Prepare(bool aistx, unsigned aperiphaddr)
 
 void THwDmaChannel_broadcom::PrepareTransfer(THwDmaTransfer * axfer)
 {
+	if (axfer->count == 0)  // avoid special errors
+	{
+		return;
+	}
+
 	uint32_t tinfo = 0
 		| (1 << 26)  // NO_WIDE_BURSTS: 0 = enable 2 cycle bursts, 1 = no wide bursts
 		| (0 << 21)  // WAITS(5): Add Wait Cycles

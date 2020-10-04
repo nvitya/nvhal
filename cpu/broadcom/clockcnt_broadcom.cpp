@@ -49,11 +49,19 @@ static THwSystemTimer *   hw_system_timer = nullptr;
 
 void clockcnt_init()
 {
-  hw_system_timer = (THwSystemTimer *)hw_memmap(SYSTEM_TIMER_BASE, sizeof(THwSystemTimer));
+	if (!hw_system_timer)
+	{
+    hw_system_timer = (THwSystemTimer *)hw_memmap(SYSTEM_TIMER_BASE, sizeof(THwSystemTimer));
+	}
 }
 
 uint64_t clockcnt()
 {
+	if (!hw_system_timer)
+	{
+		clockcnt_init();
+	}
+
 	uint32_t low;
 	uint32_t high;
 	uint32_t high2;
